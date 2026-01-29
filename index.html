@@ -1,78 +1,37 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LEGION - Forging The Intelligence Infrastructure</title>
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <!-- SVG Filter for Liquid Glass Effect -->
     <svg class="glass-svg">
-      <filter
-        id="glass-distortion"
-        x="0%"
-        y="0%"
-        width="100%"
-        height="100%"
-        filterUnits="objectBoundingBox"
-      >
-        <feTurbulence
-          type="fractalNoise"
-          baseFrequency="0.01 0.01"
-          numOctaves="1"
-          seed="5"
-          result="turbulence"
-        />
-        <feComponentTransfer in="turbulence" result="mapped">
-          <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
-          <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
-          <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
-        </feComponentTransfer>
-        <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
-        <feSpecularLighting
-          in="softMap"
-          surfaceScale="5"
-          specularConstant="1"
-          specularExponent="100"
-          lighting-color="white"
-          result="specLight"
-        >
-          <fePointLight x="-200" y="-200" z="300" />
-        </feSpecularLighting>
-        <feComposite
-          in="specLight"
-          operator="arithmetic"
-          k1="0"
-          k2="1"
-          k3="1"
-          k4="0"
-          result="litImage"
-        />
-        <feDisplacementMap
-          in="SourceGraphic"
-          in2="softMap"
-          scale="150"
-          xChannelSelector="R"
-          yChannelSelector="G"
-        />
-      </filter>
+        <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+            <feTurbulence type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="1" seed="5" result="turbulence" />
+            <feComponentTransfer in="turbulence" result="mapped">
+                <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+                <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+                <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+            </feComponentTransfer>
+            <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+            <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100"
+                lighting-color="white" result="specLight">
+                <fePointLight x="-200" y="-200" z="300" />
+            </feSpecularLighting>
+            <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
+            <feDisplacementMap in="SourceGraphic" in2="softMap" scale="0" xChannelSelector="R" yChannelSelector="G"
+                result="noWarp" />
+            <feBlend in="noWarp" in2="litImage" mode="screen" />
+        </filter>
     </svg>
 
-    <!-- Navigation -->
-    <nav class="navbar" id="navbar">
-        <div class="logo-wrap">
-            <img src="assets/Legionblanco.svg" alt="Legion Logo" class="logo-icon">
-        </div>
-        <div class="nav-right">
-            <a href="#home" class="nav-link">Home</a>
-            <a href="#cloud" class="nav-link">Cloud</a>
-            <a href="#staffing" class="nav-link">Staffing</a>
-            <a href="#quantum" class="nav-link">Quantum</a>
-            <a href="#about" class="nav-link">About us</a>
-            <a href="#cloud" class="nav-cta">Get Started</a>
-        </div>
-    </nav>
+
+    <!-- Navigation injected by components.js -->
 
     <!-- Hero Section -->
     <section class="hero" id="home">
@@ -82,10 +41,12 @@
             </video>
             <div class="video-overlay"></div>
             <div class="gradient-animation"></div>
+
         </div>
         <div class="hero-content">
-            <h1 class="hero-title">FORGING THE<br>INTELLIGENCE<br>INFRASTRUCTURE.</h1>
-            <p class="hero-subtitle">High-performance AI Cloud solutions and elite engineering staffing<br>built for the modern empire.</p>
+            <h1 class="hero-title">FORGING THE<br>INTELLIGENCE<br>EMPIRE.</h1>
+            <p class="hero-subtitle">Infraestructura Cloud de alto caudal, Talento Élite y Supremacía
+                Cuántica.<br>Ejecutamos el presente, construimos el futuro.</p>
             <div class="hero-ctas">
                 <a href="#cloud" class="cta-btn cta-primary"><span>Go to Cloud</span></a>
                 <a href="#staffing" class="cta-btn cta-secondary"><span>Go to Staffing</span></a>
@@ -96,93 +57,80 @@
     <!-- Services Section -->
     <section class="services-section">
         <div class="section-header">
-            <h2 class="section-title">Transforming businesses,<br>shaping <span class="highlight">the future</span> with data</h2>
-            <p class="section-subtitle">Our expansive suite of services empowers businesses to thrive in the digital age, prioritizing innovation, efficiency, and scalability.</p>
+            <h2 class="section-title">Transforming businesses,<br>shaping <span class="highlight">the future</span> with
+                data</h2>
+            <p class="section-subtitle">Our expansive suite of services empowers businesses to thrive in the digital
+                age, prioritizing innovation, efficiency, and scalability.</p>
         </div>
 
         <div class="services-navigation">
             <button class="scroll-btn" id="scroll-left">
-                <svg viewBox="0 0 24 24"><path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z"/></svg>
+                <svg viewBox="0 0 24 24">
+                    <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+                </svg>
             </button>
             <button class="scroll-btn" id="scroll-right">
-                <svg viewBox="0 0 24 24"><path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z"/></svg>
+                <svg viewBox="0 0 24 24">
+                    <path d="M8.59 16.59L10 18l6-6-6-6-1.41 1.41L13.17 12z" />
+                </svg>
             </button>
         </div>
         <div class="services-grid">
             <div class="service-card">
                 <svg class="service-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="32" cy="32" r="12"/>
-                    <path d="M32 8v8m0 32v8m24-24h-8M16 32H8m38.627-14.627l-5.657 5.657M22.03 41.97l-5.657 5.657m28.254 0l-5.657-5.657M22.03 22.03l-5.657-5.657"/>
+                    <path d="M12 20h40M12 32h40M12 44h40" />
+                    <rect x="8" y="8" width="48" height="48" rx="4"></rect>
                 </svg>
-                <h3 class="service-title">Generative AI & ML</h3>
-                <p class="service-desc">Leverage our revolutionary AI-driven accelerator to empower data analysis and smarter decision-making.</p>
-                <a href="#" class="service-link">Learn more →</a>
+                <h3 class="service-title" style="color: #ea9744;">Data Foundry</h3>
+                <p class="service-desc">Arquitectura de datos moderna. Pipelines ETL/ELT y Data Lakes diseñados para
+                    procesar petabytes con latencia cero y gobernanza total.</p>
+                <a href="#" class="service-link">View Architecture →</a>
             </div>
 
             <div class="service-card">
                 <svg class="service-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="12" y="12" width="16" height="40" rx="2"/>
-                    <rect x="36" y="20" width="16" height="32" rx="2"/>
-                    <path d="M20 8v4m16-4v4"/>
+                    <path d="M32 12v40M12 32h40" />
+                    <path d="M32 8L12 18v28h40V18L32 8z" />
                 </svg>
-                <h3 class="service-title">Data Engineering</h3>
-                <p class="service-desc">Facilitate data usage by reliable and efficient data pipelines, ensuring streamlined processing and storage.</p>
-                <a href="#" class="service-link">Learn more →</a>
+                <h3 class="service-title" style="color: #ea9744;">Security Matrix</h3>
+                <p class="service-desc">Protocolos Zero Trust y soberanía de datos. Protegemos activos críticos en
+                    entornos financieros y de defensa contra amenazas emergentes.</p>
+                <a href="#" class="service-link">Secure Assets →</a>
             </div>
 
             <div class="service-card">
                 <svg class="service-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M8 32h12l8-16 8 24 8-12h12"/>
-                    <circle cx="32" cy="32" r="24"/>
+                    <circle cx="32" cy="22" r="6" />
+                    <path d="M42 44c0-5.523-4.477-10-10-10s-10 4.477-10 10" />
+                    <rect x="12" y="44" width="40" height="8"></rect>
                 </svg>
-                <h3 class="service-title">Data Analytics</h3>
-                <p class="service-desc">Enable enterprise-wide access to cutting-edge analytics, delivering actionable business insights.</p>
-                <a href="#" class="service-link">Learn more →</a>
+                <h3 class="service-title" style="color: #ea9744;">Elite Staffing</h3>
+                <p class="service-desc">Despliegue de ingenieros "Contractor" pre-vetados. Talento experto en Python,
+                    Cloud y Física Computacional integrado en tu operación.</p>
+                <a href="#" class="service-link">Deploy Team →</a>
             </div>
 
             <div class="service-card">
                 <svg class="service-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="16" y="16" width="32" height="32" rx="4"/>
-                    <path d="M24 8h16v8H24zM24 48h16v8H24z"/>
-                    <circle cx="32" cy="32" r="6"/>
+                    <circle cx="32" cy="32" r="2" />
+                    <path d="M22 32a10 10 0 1 1 20 0 10 10 0 1 1-20 0" />
+                    <path d="M32 12a20 20 0 1 1 0 40 20 20 0 1 1 0-40z" />
                 </svg>
-                <h3 class="service-title">Software Design & Build</h3>
-                <p class="service-desc">Accelerate business expansion with secure, scalable, and reliable applications.</p>
-                <a href="#" class="service-link">Learn more →</a>
+                <h3 class="service-title" style="color: #ea9744;">SIQIA Research</h3>
+                <p class="service-desc">Semillero de Investigación en Computación Cuántica e IA. Algoritmos de
+                    encriptación y optimización para la era post-silicio.</p>
+                <a href="#" class="service-link">Explore R&D →</a>
             </div>
 
             <div class="service-card">
                 <svg class="service-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                    <circle cx="24" cy="24" r="8"/>
-                    <circle cx="48" cy="40" r="8"/>
-                    <path d="M28 28l16 8"/>
-                    <path d="M16 40c0-8.837 7.163-16 16-16"/>
+                    <path d="M16 16l8 8-8 8M32 16h16M32 32h16M32 48h16" />
+                    <rect x="8" y="8" width="48" height="48" rx="4"></rect>
                 </svg>
-                <h3 class="service-title">DevOps</h3>
-                <p class="service-desc">Increase efficiency in the development process to accelerate releases and time-to-market.</p>
-                <a href="#" class="service-link">Learn more →</a>
-            </div>
-
-            <div class="service-card">
-                <svg class="service-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                    <rect x="12" y="20" width="40" height="28" rx="4"/>
-                    <path d="M20 20V16a8 8 0 0116 0v4"/>
-                    <circle cx="32" cy="36" r="4"/>
-                </svg>
-                <h3 class="service-title">Data Governance</h3>
-                <p class="service-desc">Understand data assets and define ownership and processes to maximize your business value.</p>
-                <a href="#" class="service-link">Learn more →</a>
-            </div>
-
-            <div class="service-card">
-                <svg class="service-icon" viewBox="0 0 64 64" fill="none" stroke="currentColor" stroke-width="2">
-                    <path d="M32 12c-11.046 0-20 8.954-20 20s8.954 20 20 20 20-8.954 20-20"/>
-                    <path d="M32 12V4m0 8c8 0 16 4 20 12"/>
-                    <circle cx="44" cy="20" r="8"/>
-                </svg>
-                <h3 class="service-title">Cloud</h3>
-                <p class="service-desc">Empower the digital transformation of your business with our complete end-to-end cloud solutions.</p>
-                <a href="#" class="service-link">Learn more →</a>
+                <h3 class="service-title" style="color: #ea9744;">Strategic Command</h3>
+                <p class="service-desc">Consultoría de alto nivel para CTOs. Transformamos complejidad técnica en
+                    ventaja competitiva sostenible y escalable.</p>
+                <a href="#" class="service-link">Consult Now →</a>
             </div>
         </div>
     </section>
@@ -195,21 +143,28 @@
         <div class="vision-content">
             <div class="vision-text">
                 <h2>At LEGION, we build elite technology forces to serve humanity's long-term advancement.</h2>
-                <p>While no one can foresee every outcome technology will have on society, we do know that designing powerful solutions requires both bold steps forward and intentional pauses to consider the effects.</p>
-                <p>That's why we focus on building tools with strategic benefit at their foundation. Through our disciplined execution, research excellence, and cohesive teams, we aim to show what responsible technological leadership looks like in practice.</p>
+                <p>While no one can foresee every outcome technology will have on society, we do know that designing
+                    powerful solutions requires both bold steps forward and intentional pauses to consider the effects.
+                </p>
+                <p>That's why we focus on building tools with strategic benefit at their foundation. Through our
+                    disciplined execution, research excellence, and cohesive teams, we aim to show what responsible
+                    technological leadership looks like in practice.</p>
             </div>
             <div class="vision-cards">
                 <div class="vision-card">
                     <h3>Strategic Vision</h3>
-                    <p>We don't just execute projects—we architect empires. Our approach combines military precision with technological vanguard.</p>
+                    <p>We don't just execute projects—we architect empires. Our approach combines military precision
+                        with technological vanguard.</p>
                 </div>
                 <div class="vision-card">
                     <h3>Elite Execution</h3>
-                    <p>Every team member is part of a legion—cohesive, disciplined, and operating at the highest technical level.</p>
+                    <p>Every team member is part of a legion—cohesive, disciplined, and operating at the highest
+                        technical level.</p>
                 </div>
                 <div class="vision-card">
                     <h3>Global Dominance</h3>
-                    <p>From Cloud infrastructure to Quantum computing, we're building the technological ecosystem that powers tomorrow's leaders.</p>
+                    <p>From Cloud infrastructure to Quantum computing, we're building the technological ecosystem that
+                        powers tomorrow's leaders.</p>
                 </div>
             </div>
         </div>
@@ -230,9 +185,11 @@
     <!-- Footer -->
     <footer class="footer">
         <img src="assets/Legionblanco.svg" alt="Legion Logo" class="footer-logo">
-        <p class="footer-text">© 2025 LEGION. All rights reserved. | El que es, anda con los que son.</p>
+        <p class="footer-text">© 2026 LEGION. All rights reserved. | EL QUE ES, ANDA CON LOS QUE SON.</p>
     </footer>
 
+    <script src="components.js"></script>
     <script src="script.js"></script>
 </body>
+
 </html>

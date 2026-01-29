@@ -1,6 +1,8 @@
 // Navbar scroll effect
-const navbar = document.getElementById('navbar');
 window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (!navbar) return;
+
     if (window.scrollY > 50) {
         navbar.classList.add('scrolled');
     } else {
@@ -11,13 +13,20 @@ window.addEventListener('scroll', () => {
 // Smooth scroll
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
+        const href = this.getAttribute('href');
+        if (!href || href === '#') return;
+
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
-        if (target) {
-            target.scrollIntoView({
-                behavior: 'smooth',
-                block: 'start'
-            });
+        try {
+            const target = document.querySelector(href);
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        } catch (err) {
+            console.warn('Invalid selector:', href);
         }
     });
 });
@@ -38,10 +47,12 @@ const observer = new IntersectionObserver((entries) => {
 }, observerOptions);
 
 document.querySelectorAll('.service-card, .vision-card').forEach(el => {
-    el.style.opacity = '0';
-    el.style.transform = 'translateY(30px)';
-    el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-    observer.observe(el);
+    if (el) {
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(30px)';
+        el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+        observer.observe(el);
+    }
 });
 
 // Horizontal scroll for services
@@ -66,3 +77,4 @@ if (servicesGrid && scrollLeftBtn && scrollRightBtn) {
         });
     });
 }
+

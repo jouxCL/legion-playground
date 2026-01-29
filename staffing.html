@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGION STAFFING - Elite Deployment</title>
+    <link rel="stylesheet" href="staffing.css">
+</head>
+
+<body>
+    <!-- SVG Filter for Liquid Glass Effect -->
+    <svg class="glass-svg">
+        <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+            <feTurbulence type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="1" seed="5" result="turbulence" />
+            <feComponentTransfer in="turbulence" result="mapped">
+                <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+                <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+                <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+            </feComponentTransfer>
+            <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+            <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100"
+                lighting-color="white" result="specLight">
+                <fePointLight x="-200" y="-200" z="300" />
+            </feSpecularLighting>
+            <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
+            <feDisplacementMap in="SourceGraphic" in2="softMap" scale="0" xChannelSelector="R" yChannelSelector="G"
+                result="noWarp" />
+            <feBlend in="noWarp" in2="litImage" mode="screen" />
+        </filter>
+    </svg>
+
+
+    <!-- Navigation injected by components.js -->
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="video-bg">
+            <video class="video-background" autoplay muted loop playsinline>
+                <source src="assets/staffingbetavid.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+            <div class="gradient-animation"></div>
+
+        </div>
+        <div class="hero-branding-bottom-left">
+            <img src="assets/staffinglogo.svg" alt="Legion Staffing Logo" class="staffing-hero-logo">
+        </div>
+    </section>
+
+    <!-- Staffing Services Module -->
+    <section class="staffing-services-container">
+        <div class="services-columns">
+            <!-- Left Column: Menu -->
+            <div class="services-menu">
+                <div class="service-item active" data-service="Global Contractor Deployment">
+                    <h3 class="menu-title">Global Contractor Deployment</h3>
+                </div>
+                <div class="service-item" data-service="Elite Technical Training">
+                    <h3 class="menu-title">Elite Technical Training</h3>
+                </div>
+                <div class="service-item" data-service="Legal & Fiscal Shield">
+                    <h3 class="menu-title">Legal & Fiscal Shield</h3>
+                </div>
+                <div class="service-item" data-service="Remote Culture Protocol">
+                    <h3 class="menu-title">Remote Culture Protocol</h3>
+                </div>
+            </div>
+
+            <!-- Right Column: Display Panel -->
+            <div class="services-detail">
+                <div class="detail-content">
+                    <h3 id="service-title">Global Contractor Deployment</h3>
+                    <p id="service-desc">We bridge the gap between elite Latin American talent and global markets. We
+                        manage the seamless insertion of engineers under Contractor models for high-demand US/EU
+                        sectors, reducing hiring friction and ensuring rapid deployment.</p>
+                </div>
+                <div id="service-img-placeholder">
+                    <span>IMG SLOT [1:1]</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Staffing Services Module Logic
+        document.addEventListener('DOMContentLoaded', () => {
+            const servicesData = {
+                "Global Contractor Deployment": {
+                    desc: "We bridge the gap between elite Latin American talent and global markets. We manage the seamless insertion of engineers under Contractor models for high-demand US/EU sectors, reducing hiring friction and ensuring rapid deployment."
+                },
+                "Elite Technical Training": {
+                    desc: "Intensive upskilling in Cloud Architecture, Python, and Computational Physics. We forge engineers who understand algorithms at a fundamental level, not just frameworks."
+                },
+                "Legal & Fiscal Shield": {
+                    desc: "Full administrative armor. We structure the legal and fiscal framework to ensure our talent operates with total legitimacy and financial security in international jurisdictions."
+                },
+                "Remote Culture Protocol": {
+                    desc: "Preparation for high-performance asynchronous dynamics. We align cultural mindsets to ensure seamless integration into distributed elite teams."
+                }
+            };
+
+            const menuItems = document.querySelectorAll('.service-item');
+            const titleEl = document.getElementById('service-title');
+            const descEl = document.getElementById('service-desc');
+            const detailPanel = document.querySelector('.services-detail');
+
+            menuItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    const serviceName = item.getAttribute('data-service');
+                    if (!servicesData[serviceName]) return;
+
+                    // Update Active State
+                    menuItems.forEach(i => i.classList.remove('active'));
+                    item.classList.add('active');
+
+                    // Content Transition
+                    detailPanel.style.opacity = '0';
+                    setTimeout(() => {
+                        titleEl.textContent = serviceName;
+                        descEl.textContent = servicesData[serviceName].desc;
+                        detailPanel.style.opacity = '1';
+                    }, 200);
+                });
+            });
+        });
+    </script>
+
+    <!-- Operational Superiority Section (Infinite Scroll) -->
+    <section class="operational-section">
+        <h2 class="section-title">OPERATIONAL SUPERIORITY</h2>
+        <div class="marquee-container">
+            <div class="marquee-track">
+                <!-- Set 1 -->
+                <div class="operational-card">
+                    <div class="card-icon">
+                        <!-- Atom SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path
+                                d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5z">
+                            </path>
+                            <path
+                                d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h4>Scientific Rigor</h4>
+                    <p>Engineers trained in Physics & Calculus. We solve problems, we don't just patch code.</p>
+                </div>
+                <div class="operational-card">
+                    <div class="card-icon">
+                        <!-- Globe SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h4>Time Zone Sync</h4>
+                    <p>Real-time collaboration with US/EU markets. Zero lag.</p>
+                </div>
+                <div class="operational-card">
+                    <div class="card-icon">
+                        <!-- Shield SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h4>Battle-Tested</h4>
+                    <p>Talent pre-vetted in high-pressure environments.</p>
+                </div>
+                <div class="operational-card">
+                    <div class="card-icon">
+                        <!-- Brain/Circuit SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                            <rect x="9" y="9" width="6" height="6"></rect>
+                            <line x1="9" y1="1" x2="9" y2="4"></line>
+                            <line x1="15" y1="1" x2="15" y2="4"></line>
+                            <line x1="9" y1="20" x2="9" y2="23"></line>
+                            <line x1="15" y1="20" x2="15" y2="23"></line>
+                            <line x1="20" y1="9" x2="23" y2="9"></line>
+                            <line x1="20" y1="14" x2="23" y2="14"></line>
+                            <line x1="1" y1="9" x2="4" y2="9"></line>
+                            <line x1="1" y1="14" x2="4" y2="14"></line>
+                        </svg>
+                    </div>
+                    <h4>Deep Loyalty</h4>
+                    <p>Low turnover rates. Committed to the long-term mission.</p>
+                </div>
+                <div class="operational-card">
+                    <div class="card-icon">
+                        <!-- Chat Bubble SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h4>Cultural Fluency</h4>
+                    <p>Full English proficiency and soft-skills alignment.</p>
+                </div>
+
+                <!-- Set 2 (Duplicate for Loop) -->
+                <div class="operational-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="3"></circle>
+                            <path
+                                d="M20.2 20.2c2.04-2.03.02-7.36-4.5-11.9-4.54-4.52-9.87-6.54-11.9-4.5-2.04 2.03-.02 7.36 4.5 11.9 4.54 4.52 9.87 6.54 11.9 4.5z">
+                            </path>
+                            <path
+                                d="M15.7 15.7c4.52-4.54 6.54-9.87 4.5-11.9-2.03-2.04-7.36-.02-11.9 4.5-4.52 4.54-6.54 9.87-4.5 11.9 2.03 2.04 7.36.02 11.9-4.5z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h4>Scientific Rigor</h4>
+                    <p>Engineers trained in Physics & Calculus. We solve problems, we don't just patch code.</p>
+                </div>
+                <div class="operational-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <line x1="2" y1="12" x2="22" y2="12"></line>
+                            <path
+                                d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h4>Time Zone Sync</h4>
+                    <p>Real-time collaboration with US/EU markets. Zero lag.</p>
+                </div>
+                <div class="operational-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path>
+                        </svg>
+                    </div>
+                    <h4>Battle-Tested</h4>
+                    <p>Talent pre-vetted in high-pressure environments.</p>
+                </div>
+                <div class="operational-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="4" y="4" width="16" height="16" rx="2" ry="2"></rect>
+                            <rect x="9" y="9" width="6" height="6"></rect>
+                            <line x1="9" y1="1" x2="9" y2="4"></line>
+                            <line x1="15" y1="1" x2="15" y2="4"></line>
+                            <line x1="9" y1="20" x2="9" y2="23"></line>
+                            <line x1="15" y1="20" x2="15" y2="23"></line>
+                            <line x1="20" y1="9" x2="23" y2="9"></line>
+                            <line x1="20" y1="14" x2="23" y2="14"></line>
+                            <line x1="1" y1="9" x2="4" y2="9"></line>
+                            <line x1="1" y1="14" x2="4" y2="14"></line>
+                        </svg>
+                    </div>
+                    <h4>Deep Loyalty</h4>
+                    <p>Low turnover rates. Committed to the long-term mission.</p>
+                </div>
+                <div class="operational-card">
+                    <div class="card-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"
+                            stroke-linecap="round" stroke-linejoin="round">
+                            <path
+                                d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z">
+                            </path>
+                        </svg>
+                    </div>
+                    <h4>Cultural Fluency</h4>
+                    <p>Full English proficiency and soft-skills alignment.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Staffing Footer Section -->
+    <section class="staffing-footer">
+        <div class="footer-glow"></div>
+        <div class="footer-cta-content">
+            <h2 class="footer-headline">The next chapter of your empire is now.</h2>
+            <div class="footer-cta-btns">
+                <a href="#" class="cta-btn staffing-primary"><span>START BUILDING WITH LEGION</span></a>
+                <a href="#" class="staffing-secondary-link">Talk to an expert -></a>
+            </div>
+        </div>
+
+        <div class="footer-branding">
+            <img src="assets/Legionblanco.svg" alt="Legion Logo" class="footer-logo">
+            <p class="footer-legal">© 2026 LEGION. All rights reserved. | EL QUE ES, ANDA CON LOS QUE SON.</p>
+        </div>
+    </section>
+
+    <script src="components.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
