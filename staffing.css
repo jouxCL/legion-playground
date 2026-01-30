@@ -2,16 +2,23 @@
 
 /* Liquid Glass v2.0 – Cyber-Imperial Variation */
 :root {
+    /* 🎨 COLORES PRINCIPALES - Staffing Identity */
+    --color-primario: #6B2C91;
+    /* Imperial Purple */
+    --color-secundario: #D4AF37;
+    /* Legion Gold */
+    --color-texto-claro: #E0E0E0;
+
     --glass-bg: rgba(255, 255, 255, 0.05);
     --glass-border: 1px solid rgba(255, 255, 255, 0.1);
     --glass-blur: 16px;
     --glass-shadow: 0 8px 32px 0 rgba(107, 44, 145, 0.2);
-    /* Purple tinted shadow */
-    --legion-purple: #6B2C91;
-    /* Imperial Purple */
+
+    /* Legacy variables mapping for existing components */
+    --legion-purple: var(--color-primario);
     --legion-neon: #E91E63;
-    /* Neon Pink */
-    --text-silver: #C0C0C0;
+    /* Keeping Neon Pink for accents */
+    --text-silver: var(--color-texto-claro);
 }
 
 * {
@@ -26,12 +33,12 @@ html {
 }
 
 body {
-    background: #000000;
-    /* Pure Black */
+    background: #0A0A0A;
     color: #FFFFFF;
     font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
     overflow-x: hidden;
     position: relative;
+    min-height: 100vh;
     /* Performance optimizations */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
@@ -46,37 +53,43 @@ body {
 
 body::before {
     content: '';
+    display: block;
     position: fixed;
     top: 0;
     left: 0;
     right: 0;
     bottom: 0;
+    /* THE PURPLE STAFFING THEME */
     background:
-        radial-gradient(circle at 20% 30%, rgba(107, 44, 145, 0.4) 0%, transparent 50%),
-        radial-gradient(circle at 80% 60%, rgba(233, 30, 99, 0.4) 0%, transparent 50%),
-        radial-gradient(circle at 50% 80%, rgba(192, 192, 192, 0.3) 0%, transparent 50%),
-        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(107, 44, 145, 0.04) 60px, rgba(107, 44, 145, 0.04) 61px),
-        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(107, 44, 145, 0.04) 60px, rgba(107, 44, 145, 0.04) 61px);
-    z-index: 0;
+        radial-gradient(circle at 20% 30%, rgba(107, 44, 145, 0.45) 0%, transparent 50%),
+        radial-gradient(circle at 80% 60%, rgba(234, 151, 68, 0.25) 0%, transparent 50%),
+        repeating-linear-gradient(0deg, transparent, transparent 60px, rgba(107, 44, 145, 0.05) 60px, rgba(107, 44, 145, 0.05) 61px),
+        repeating-linear-gradient(90deg, transparent, transparent 60px, rgba(107, 44, 145, 0.05) 60px, rgba(107, 44, 145, 0.05) 61px);
+    z-index: -1;
+    pointer-events: none;
 }
 
 body::after {
-    content: 'STAFFING';
+    content: 'LEGION';
     position: fixed;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) rotate(-3deg);
+
+    /* 📏 Ajusta estos valores según el largo del texto */
     font-size: clamp(80px, 25vw, 600px);
-    font-weight: 100;
-    color: rgba(107, 44, 145, 0.05);
-    z-index: 0;
     letter-spacing: clamp(10px, 4vw, 60px);
+
+    /* Estilo del texto */
+    font-weight: 100;
+    color: rgba(107, 44, 145, 0.015);
+    z-index: 0;
     font-family: 'Times New Roman', serif;
     white-space: nowrap;
     pointer-events: none;
+    user-select: none;
 }
 
-.navbar,
 .hero,
 .services-section,
 .vision-section,
@@ -86,140 +99,6 @@ body::after {
     z-index: 1;
 }
 
-/* Navigation - Palantir-style with Liquid Glass */
-.navbar {
-    position: fixed;
-    top: 16px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: calc(100% - 32px);
-    max-width: 1400px;
-    min-height: 72px;
-    z-index: 1000;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 8px 24px 8px 12px;
-    gap: 24px;
-    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
-    overflow: hidden;
-    border-radius: 20px;
-    box-shadow:
-        0 8px 16px rgba(0, 0, 0, 0.4),
-        0 2px 4px rgba(0, 0, 0, 0.2);
-    /* Performance optimization */
-    will-change: transform;
-    transform: translateX(-50%) translateZ(0);
-    contain: layout style;
-}
-
-.navbar::before {
-    content: '';
-    position: absolute;
-    z-index: 0;
-    inset: 0;
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-    border-radius: 20px;
-}
-
-.navbar::after {
-    content: '';
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-    background: var(--glass-bg);
-    border: var(--glass-border);
-    border-radius: 20px;
-    box-shadow: var(--glass-shadow);
-    pointer-events: none;
-}
-
-.logo-wrap,
-.nav-right {
-    position: relative;
-    z-index: 3;
-}
-
-.navbar.scrolled {
-    top: 12px;
-    padding: 6px 20px 6px 10px;
-    box-shadow:
-        0 12px 32px rgba(0, 0, 0, 0.5),
-        0 4px 8px rgba(0, 0, 0, 0.3);
-}
-
-.navbar.scrolled::before {
-    backdrop-filter: blur(var(--glass-blur));
-    -webkit-backdrop-filter: blur(var(--glass-blur));
-}
-
-.navbar.scrolled::after {
-    background: var(--glass-bg);
-    border: var(--glass-border);
-    box-shadow: var(--glass-shadow);
-}
-
-.logo-wrap {
-    display: flex;
-    align-items: center;
-}
-
-.logo-icon {
-    width: 100px;
-    min-width: 100px;
-    height: auto;
-    max-height: 56px;
-    object-fit: contain;
-    display: block;
-}
-
-.nav-right {
-    display: flex;
-    gap: 10px;
-    align-items: center;
-}
-
-.nav-link {
-    color: #ffffff;
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    transition: all 0.3s ease;
-    padding: 8px 14px;
-    border-radius: 10px;
-}
-
-.nav-link:hover {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.2);
-}
-
-.nav-link.active {
-    color: #ffffff;
-    background: rgba(255, 255, 255, 0.25);
-}
-
-.nav-cta {
-    display: inline-flex;
-    align-items: center;
-    padding: 10px 20px;
-    background: transparent;
-    color: #ffffff;
-    border: 1px solid rgba(255, 255, 255, 0.6);
-    border-radius: 12px;
-    font-size: 13px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    text-decoration: none;
-    transition: all 0.3s ease;
-}
-
-.nav-cta:hover {
-    background: rgba(255, 255, 255, 0.15);
-    border-color: rgba(255, 255, 255, 0.9);
-}
 
 /* Hero Section */
 .hero {
@@ -230,12 +109,14 @@ body::after {
     align-items: center;
     position: relative;
     padding: 140px 80px 80px;
-    background: #000000;
+    background: transparent;
+    /* Allow body::before grid to show through */
     overflow: hidden;
     /* Performance optimization */
     contain: layout style paint;
 }
 
+/* Legacy video background kept - sits behind grid due to z-index */
 .video-bg {
     position: absolute;
     top: 0;
@@ -243,7 +124,7 @@ body::after {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    z-index: 0;
+    z-index: -1;
 }
 
 .video-background {
@@ -253,7 +134,8 @@ body::after {
     width: 100vw;
     height: 100vh;
     object-fit: cover;
-    z-index: -1;
+    z-index: -5;
+    opacity: 0.4;
     filter: url(#glass-distortion) brightness(0.4);
     pointer-events: none;
     will-change: transform;
@@ -312,7 +194,8 @@ body::after {
 /* Staffing Footer Section */
 .staffing-footer {
     padding: 120px 20px;
-    background: #000000;
+    background: transparent;
+    /* Allow body::before grid to show */
     position: relative;
     display: flex;
     flex-direction: column;
@@ -435,8 +318,8 @@ body::after {
     max-width: 1600px;
     margin: 0 auto;
     position: relative;
-    background: #050505;
-    /* Deep Black defined in prompt */
+    background: transparent;
+    /* Allow body::before grid to show */
     z-index: 2;
     /* Above any background elements */
     /* Performance optimization */
@@ -592,8 +475,11 @@ body::after {
 .operational-section {
     padding: 100px 0;
     overflow: hidden;
+    overflow-x: hidden !important;
+    /* Prevent horizontal scrolling from overflow container */
     position: relative;
-    background: #050505;
+    background: transparent;
+    /* Allow body::before grid to show */
     z-index: 2;
     /* Performance optimization */
     contain: layout style;
@@ -614,59 +500,6 @@ body::after {
     -webkit-text-fill-color: transparent;
 }
 
-.marquee-container {
-    width: 100%;
-    overflow: hidden;
-    position: relative;
-    padding: 20px 0;
-}
-
-/* Gradient Fade Masks */
-.marquee-container::before,
-.marquee-container::after {
-    content: "";
-    position: absolute;
-    top: 0;
-    width: 150px;
-    height: 100%;
-    z-index: 2;
-    pointer-events: none;
-}
-
-.marquee-container::before {
-    left: 0;
-    background: linear-gradient(to right, #050505, transparent);
-}
-
-.marquee-container::after {
-    right: 0;
-    background: linear-gradient(to left, #050505, transparent);
-}
-
-.marquee-track {
-    display: flex;
-    gap: 30px;
-    width: max-content;
-    animation: scroll 40s linear infinite;
-    will-change: transform;
-    transform: translateZ(0);
-}
-
-/* Pause on hover */
-.marquee-container:hover .marquee-track {
-    animation-play-state: paused;
-}
-
-@keyframes scroll {
-    0% {
-        transform: translate3d(0, 0, 0);
-    }
-
-    100% {
-        transform: translate3d(calc(-50% - 15px), 0, 0);
-        /* Half of track + half gap */
-    }
-}
 
 .operational-card {
     width: 300px;
@@ -730,5 +563,103 @@ body::after {
 
     .section-title {
         margin-bottom: 40px;
+    }
+}
+
+/* -----------------------------------------------------------
+   OPERATIONAL SUPERIORITY MARQUEE - CLEAN REBUILD v2.0
+   NO MASKS, NO ARTIFACTS, PURE TRANSPARENCY
+   ----------------------------------------------------------- */
+
+.marquee-container {
+    /* REVERTED - Standard container width */
+    width: 100% !important;
+    margin: 0 !important;
+    overflow: hidden;
+    position: relative;
+    padding: 20px 0;
+    /* 100% TRANSPARENCY - Let the Imperial Grid show through */
+    background: transparent !important;
+    /* Anti-artifact protection */
+    outline: none !important;
+    border: none !important;
+    /* GPU optimization to prevent white flickers */
+    will-change: contents;
+    transform: translateZ(0);
+}
+
+/* ═══════════════════════════════════════════════════════════
+   RADIANT GOLDEN THREADS - Minimalist Roman Luxury
+   Thin lines with atmospheric glow
+   ═══════════════════════════════════════════════════════════ */
+
+/* Left Golden Thread - 15% More Intense */
+.marquee-container::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 3px;
+    /* Brilliant Gold - 15% brighter */
+    background: #FFD700;
+    /* The Aura - 15% stronger golden mist that masks artifacts */
+    box-shadow: 12px 0px 25px rgba(212, 175, 55, 0.52);
+    z-index: 10;
+    pointer-events: none;
+    /* Minimalist Roman Accents - Capital */
+    border-top: 2px solid #FFD700;
+    border-bottom: 2px solid #FFD700;
+}
+
+/* Right Golden Thread - 15% More Intense */
+.marquee-container::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 3px;
+    /* Brilliant Gold - 15% brighter */
+    background: #FFD700;
+    /* The Aura - 15% stronger golden mist that masks artifacts */
+    box-shadow: -12px 0px 25px rgba(212, 175, 55, 0.52);
+    z-index: 10;
+    pointer-events: none;
+    /* Minimalist Roman Accents - Base and Capital */
+    border-top: 2px solid #FFD700;
+    border-bottom: 2px solid #FFD700;
+}
+
+.marquee-track {
+    display: flex;
+    gap: 30px;
+    width: max-content;
+    /* Infinite scroll animation */
+    animation: marqueeScroll 40s linear infinite;
+    /* Anti-artifact protection */
+    background: transparent !important;
+    outline: none !important;
+    border: none !important;
+    /* GPU optimization - prevents sub-pixel rendering issues */
+    will-change: transform;
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    -webkit-font-smoothing: subpixel-antialiased;
+}
+
+/* Pause animation on hover */
+.marquee-container:hover .marquee-track {
+    animation-play-state: paused;
+}
+
+/* Clean keyframes - using translate3d for GPU acceleration */
+@keyframes marqueeScroll {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+
+    100% {
+        transform: translate3d(calc(-50% - 15px), 0, 0);
     }
 }

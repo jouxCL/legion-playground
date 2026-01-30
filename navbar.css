@@ -1,0 +1,199 @@
+/* LEGION - Shared Navigation Styles */
+
+.navbar {
+    /* Scoped variables for 100% consistency across themes */
+    --nav-glass-bg: rgba(255, 255, 255, 0.05);
+    --nav-glass-border: 1px solid rgba(255, 255, 255, 0.1);
+    --nav-glass-blur: 16px;
+    --nav-glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.36);
+
+    position: fixed;
+    top: 16px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: calc(100% - 32px);
+    max-width: 1400px;
+    min-height: 72px;
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 8px 24px 8px 12px;
+    gap: 24px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+    overflow: hidden;
+    border-radius: 20px;
+    box-shadow:
+        0 8px 16px rgba(0, 0, 0, 0.4),
+        0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.navbar::before {
+    content: '';
+    position: absolute;
+    z-index: 0;
+    inset: 0;
+    backdrop-filter: blur(var(--nav-glass-blur));
+    -webkit-backdrop-filter: blur(var(--nav-glass-blur));
+    border-radius: 20px;
+}
+
+.navbar::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: var(--nav-glass-bg);
+    border: var(--nav-glass-border);
+    border-radius: 20px;
+    box-shadow: var(--nav-glass-shadow);
+    pointer-events: none;
+}
+
+.logo-wrap,
+.nav-right {
+    position: relative;
+    z-index: 3;
+}
+
+.navbar.scrolled {
+    top: 12px;
+    padding: 6px 20px 6px 10px;
+    box-shadow:
+        0 12px 32px rgba(0, 0, 0, 0.5),
+        0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.navbar.scrolled::before {
+    backdrop-filter: blur(var(--nav-glass-blur));
+    -webkit-backdrop-filter: blur(var(--nav-glass-blur));
+}
+
+.navbar.scrolled::after {
+    background: var(--nav-glass-bg);
+    border: var(--nav-glass-border);
+    box-shadow: var(--nav-glass-shadow);
+}
+
+.logo-wrap {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+}
+
+.logo-icon {
+    width: 100px;
+    min-width: 100px;
+    height: auto;
+    max-height: 56px;
+    object-fit: contain;
+    display: block;
+    filter: none !important;
+    /* Ensure logo is always white/original */
+}
+
+.nav-right {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.nav-link {
+    color: #ffffff !important;
+    /* Forced white for consistency */
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: all 0.3s ease;
+    padding: 8px 14px;
+    border-radius: 10px;
+}
+
+.nav-link:hover {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+}
+
+.nav-link.active {
+    color: #ffffff !important;
+    background: rgba(255, 255, 255, 0.25) !important;
+}
+
+.nav-cta {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 20px;
+    background: transparent;
+    color: #ffffff !important;
+    border: 1px solid rgba(255, 255, 255, 0.6) !important;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.nav-cta:hover {
+    background: rgba(255, 255, 255, 0.15) !important;
+    border-color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+    .navbar {
+        width: calc(100% - 24px);
+        padding: 6px 16px 6px 10px;
+    }
+
+    .nav-right {
+        gap: 6px;
+    }
+
+    .nav-link {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+}
+
+@media (max-width: 768px) {
+    .navbar {
+        width: calc(100% - 16px);
+        padding: 6px 12px 6px 8px;
+        border-radius: 16px;
+        flex-wrap: wrap;
+        min-height: auto;
+    }
+
+    .navbar::before,
+    .navbar::after {
+        border-radius: 16px;
+    }
+
+    .navbar.scrolled {
+        top: 8px;
+        padding: 4px 10px 4px 6px;
+    }
+
+    .logo-icon {
+        width: 80px;
+        min-width: 80px;
+        max-height: 44px;
+    }
+
+    .nav-right {
+        gap: 4px;
+        flex-wrap: wrap;
+    }
+
+    .nav-link {
+        font-size: 11px;
+        padding: 5px 8px;
+    }
+
+    .nav-cta {
+        padding: 8px 14px;
+        font-size: 12px;
+    }
+}

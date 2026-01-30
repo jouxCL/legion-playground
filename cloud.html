@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGION CLOUD - The Operational Core</title>
+    <link rel="stylesheet" href="style.css"> <!-- Base styles -->
+    <link rel="stylesheet" href="navbar.css"> <!-- Global navbar consistency -->
+    <link rel="stylesheet" href="cloud.css"> <!-- Cloud division overrides -->
+</head>
+
+<body>
+    <!-- SVG Filter for Liquid Glass Effect - Copied from Index -->
+    <svg class="glass-svg">
+        <filter id="glass-distortion" x="0%" y="0%" width="100%" height="100%" filterUnits="objectBoundingBox">
+            <feTurbulence type="fractalNoise" baseFrequency="0.01 0.01" numOctaves="1" seed="5" result="turbulence" />
+            <feComponentTransfer in="turbulence" result="mapped">
+                <feFuncR type="gamma" amplitude="1" exponent="10" offset="0.5" />
+                <feFuncG type="gamma" amplitude="0" exponent="1" offset="0" />
+                <feFuncB type="gamma" amplitude="0" exponent="1" offset="0.5" />
+            </feComponentTransfer>
+            <feGaussianBlur in="turbulence" stdDeviation="3" result="softMap" />
+            <feSpecularLighting in="softMap" surfaceScale="5" specularConstant="1" specularExponent="100"
+                lighting-color="white" result="specLight">
+                <fePointLight x="-200" y="-200" z="300" />
+            </feSpecularLighting>
+            <feComposite in="specLight" operator="arithmetic" k1="0" k2="1" k3="1" k4="0" result="litImage" />
+            <feDisplacementMap in="SourceGraphic" in2="softMap" scale="0" xChannelSelector="R" yChannelSelector="G"
+                result="noWarp" />
+            <feBlend in="noWarp" in2="litImage" mode="screen" />
+        </filter>
+    </svg>
+
+    <!-- Navigation injected by components.js -->
+
+    <!-- Hero Section (Adapted for Cloud) -->
+    <section class="hero" id="cloud-home">
+        <div class="video-bg">
+            <img src="assets/CloudVideoGiftBeta.gif" class="bg-media-gif" alt="Cloud Background Animation">
+            <div class="video-overlay"></div>
+        </div>
+
+        <!-- Cloud Logo - Bottom Left Corner -->
+        <div class="hero-branding-bottom-left">
+            <img src="assets/CloudLogo.svg" alt="Legion Cloud Logo" class="cloud-hero-logo">
+        </div>
+    </section>
+
+    <!-- Operational Core Section (Adapted from Services Structure) -->
+    <section class="services-section">
+        <div class="section-header">
+            <h2 class="section-title">The Operational Core<br>of the Empire</h2>
+            <p class="section-subtitle">Architecting solutions for a data-driven era. We build the infrastructure that
+                powers tomorrow's dominance.</p>
+        </div>
+
+        <!-- Additional Cloud Content/Cards could go here -->
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <img src="assets/Legionblanco.svg" alt="Legion Logo" class="footer-logo">
+        <p class="footer-text">© 2026 LEGION. All rights reserved. | EL QUE ES, ANDA CON LOS QUE SON.</p>
+    </footer>
+
+    <script src="components.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
