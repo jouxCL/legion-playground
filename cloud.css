@@ -820,7 +820,9 @@ body::after {
     .cloud-hero-logo {
         width: 85vw;
     }
-}/* GIF Background Media - Replaces video */
+}
+
+/* GIF Background Media - Replaces video */
 .bg-media-gif {
     position: absolute;
     top: 0;
@@ -832,3 +834,387 @@ body::after {
     /* No filters - original quality GIF */
 }
 
+/* ===================================================================
+   VALUE PROPOSITION SECTION - Cinematic Text Overlay
+   =================================================================== */
+
+.cloud-value-proposition {
+    /* CRITICAL: Transparent background to show global Grid + Video/GIF */
+    background: transparent !important;
+    padding: 160px 80px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+    /* Increased height for cinematic breathing room */
+    text-align: center;
+}
+
+.value-content-wrapper {
+    max-width: 1400px;
+    margin: 0 auto;
+    /* Entrance Animation */
+    animation: fadeInUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    opacity: 0;
+}
+
+/* Massive Imposing Headline floating in the void */
+.value-headline {
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 2rem;
+    color: #FFFFFF;
+    letter-spacing: -0.03em;
+    text-transform: none;
+
+    /* 100% Flat Purity - No Shadows/Glows */
+    text-shadow: none !important;
+}
+
+/* Sub-headline / Tagline */
+.value-tagline {
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 500;
+    color: #CCCCCC;
+    line-height: 1.5;
+    opacity: 0;
+    animation: fadeInUp 1.5s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+
+    /* 100% Flat Purity - No Shadows/Glows */
+    text-shadow: none !important;
+}
+
+/* Fade In Up Animation */
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1024px) {
+    .cloud-value-proposition {
+        padding: 120px 40px;
+        min-height: 60vh;
+    }
+}
+
+@media (max-width: 768px) {
+    .cloud-value-proposition {
+        padding: 100px 24px;
+        min-height: 50vh;
+    }
+
+    .value-headline {
+        font-size: clamp(2.5rem, 10vw, 4rem);
+        margin-bottom: 1.5rem;
+    }
+}
+
+/* ---------------------------------------------------- */
+/* CLOUD SERVICES ARCHITECTURE (ACCORDION)              */
+/* ---------------------------------------------------- */
+
+.cloud-services-section {
+    position: relative;
+    z-index: 10;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 40px 120px;
+}
+
+.accordion-container {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Accordion Item Container (Glass) */
+.service-accordion-item {
+    background: rgba(10, 20, 35, 0.6);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+    /* Subtle Gold */
+    border-radius: 4px;
+    transition: all 0.4s ease;
+    overflow: hidden;
+}
+
+.service-accordion-item:hover {
+    background: rgba(10, 20, 35, 0.8);
+    box-shadow: 0 0 20px rgba(10, 36, 99, 0.3);
+    /* Imperial Blue Glow */
+    border-bottom-color: rgba(212, 175, 55, 0.4);
+}
+
+.service-accordion-item.active {
+    background: rgba(10, 20, 35, 0.9);
+    border-bottom-color: rgba(212, 175, 55, 0.8);
+    box-shadow: 0 0 30px rgba(10, 36, 99, 0.4);
+}
+
+/* Trigger (The Bar) */
+.service-trigger {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    padding: 24px 32px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    outline: none;
+    color: #FFFFFF;
+    font-family: 'Space Grotesk', sans-serif;
+    transition: all 0.3s ease;
+}
+
+.trigger-icon {
+    font-size: 20px;
+    color: #D4AF37;
+    /* Gold */
+    margin-right: 24px;
+    transition: transform 0.3s ease;
+}
+
+.trigger-title {
+    font-size: 18px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    flex-grow: 1;
+}
+
+.trigger-toggle {
+    font-size: 24px;
+    color: #D4AF37;
+    font-weight: 300;
+    transition: transform 0.4s ease;
+}
+
+/* Rotations for Active State */
+.service-accordion-item.active .trigger-toggle {
+    transform: rotate(45deg);
+    /* Turns + into x */
+    color: #D4AF37;
+}
+
+.service-accordion-item.active .trigger-icon {
+    color: #FFFFFF;
+    text-shadow: 0 0 10px #D4AF37;
+}
+
+/* Content Panel (Hidden by default) */
+.service-content-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.panel-inner {
+    padding: 2px 40px 48px 76px;
+    /* Indented to align with title */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.panel-intro {
+    margin-bottom: 40px;
+    padding-top: 24px;
+}
+
+.panel-intro h3 {
+    font-size: 14px;
+    color: #D4AF37;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    opacity: 0.8;
+}
+
+.panel-intro p {
+    font-size: 18px;
+    color: #CCCCCC;
+    line-height: 1.6;
+    max-width: 800px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Grid Layout */
+.panel-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+}
+
+.grid-item {
+    position: relative;
+    padding-left: 24px;
+}
+
+.grid-icon {
+    position: absolute;
+    left: 0;
+    top: 2px;
+    font-size: 12px;
+    color: #D4AF37;
+}
+
+.grid-item h4 {
+    font-size: 16px;
+    color: #FFFFFF;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 700;
+}
+
+.grid-item p {
+    font-size: 14px;
+    color: rgba(192, 192, 192, 0.7);
+    line-height: 1.5;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .service-trigger {
+        padding: 20px;
+    }
+
+    .trigger-icon {
+        margin-right: 16px;
+    }
+
+    .trigger-title {
+        font-size: 14px;
+    }
+
+    .panel-inner {
+        padding: 0 20px 32px 20px;
+    }
+
+    .panel-intro p {
+        font-size: 16px;
+    }
+
+    .panel-grid {
+        grid-template-columns: 1fr;
+        gap: 24px;
+    }
+}
+
+/* ---------------------------------------------------- */
+/* CLOUD FINAL CTA                                      */
+/* ---------------------------------------------------- */
+
+.cloud-cta-section {
+    background: transparent !important;
+    padding: 120px 20px;
+    text-align: center;
+    position: relative;
+    z-index: 10;
+}
+
+.cta-headline {
+    font-size: clamp(2.5rem, 5vw, 4rem);
+    font-weight: 700;
+    color: #FFFFFF;
+    margin-bottom: 60px;
+    line-height: 1.1;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    /* Lift it off the bg */
+    max-width: 1000px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.cta-buttons-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    flex-wrap: wrap;
+}
+
+/* Primary Button (Imperial Blue + Gold) */
+.cloud-btn-primary {
+    position: relative;
+    padding: 20px 48px;
+    background: linear-gradient(45deg, #0A2463, #0033A0);
+    /* Deep Imperial Blue */
+    border: 1px solid #D4AF37;
+    /* Legion Gold */
+    border-radius: 4px;
+    color: #FFFFFF;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    text-transform: uppercase;
+    text-decoration: none;
+    letter-spacing: 2px;
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+    box-shadow: 0 8px 30px rgba(10, 36, 99, 0.4);
+}
+
+.cloud-btn-primary:hover {
+    transform: scale(1.05);
+    box-shadow: 0 12px 40px rgba(10, 36, 99, 0.6), 0 0 20px rgba(212, 175, 55, 0.4);
+    background: linear-gradient(45deg, #0D2E7A, #0044CC);
+    /* Slightly lighter on hover */
+}
+
+/* Secondary Button (Link) */
+.cloud-btn-secondary {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    color: #E0E0E0;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 18px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+
+.cloud-btn-secondary .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.cloud-btn-secondary:hover {
+    color: #D4AF37;
+    /* Gold */
+}
+
+.cloud-btn-secondary:hover .arrow {
+    transform: translateX(6px);
+    /* Slide arrow */
+}
+
+@media (max-width: 768px) {
+    .cloud-cta-section {
+        padding: 80px 20px;
+    }
+
+    .cta-buttons-wrapper {
+        flex-direction: column;
+        gap: 24px;
+    }
+
+    .cloud-btn-primary {
+        width: 100%;
+        text-align: center;
+    }
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEGION QUANTUM - Computación Cuántica</title>
+
+    <!-- Stylesheets -->
+    <link rel="stylesheet" href="quantum.css">
+    <link rel="stylesheet" href="navbar.css">
+</head>
+
+<body>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         BARRA DE NAVEGACIÓN (Injected via components.js)
+         ═══════════════════════════════════════════════════════════ -->
+
+    <!-- ═══════════════════════════════════════════════════════════
+         CONTENIDO PRINCIPAL
+         ═══════════════════════════════════════════════════════════ -->
+
+    <main>
+        <!-- Hero Section (Adapted for Quantum) -->
+        <section class="hero" id="quantum-home">
+            <div class="video-bg">
+                <img src="assets/QuantumVideoGiftBeta.gif" class="bg-media-gif" alt="Quantum Background Animation">
+                <div class="video-overlay"></div>
+            </div>
+
+
+
+            <!-- Quantum Logo - Bottom Left Corner -->
+            <div class="hero-branding-bottom-left">
+                <img src="assets/QuantumLogo.svg" alt="Legion Quantum Logo" class="quantum-hero-logo">
+            </div>
+        </section>
+
+        <!-- Quantum Philosophy Section -->
+        <section class="quantum-philosophy-section">
+            <div class="philosophy-content">
+                <h2 class="philosophy-title">QUANTUM ADVANTAGE IS NOT THEORY.</h2>
+                <p class="philosophy-subtitle">It is the next strategic domain. We bridge the gap between academic
+                    research and industrial dominance.</p>
+            </div>
+        </section>
+
+
+
+        <!-- SIQIA Research Core Section -->
+        <section class="siqia-section">
+            <div class="glass-panel siqia-container">
+                <!-- Left Column: Visual -->
+                <div class="siqia-visual">
+                    <h2 class="siqia-title">SIQIA</h2>
+                    <span class="siqia-label">R&D CORE UNIT</span>
+                    <div class="siqia-icon-wrapper">
+                        <!-- Abstract Atom/Network Icon -->
+                        <svg width="200" height="200" viewBox="0 0 100 100" fill="none"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="50" cy="50" r="45" stroke="#D4AF37" stroke-width="1" stroke-opacity="0.5" />
+                            <ellipse cx="50" cy="50" rx="45" ry="15" stroke="#064420" stroke-width="1"
+                                transform="rotate(60 50 50)" />
+                            <ellipse cx="50" cy="50" rx="45" ry="15" stroke="#064420" stroke-width="1"
+                                transform="rotate(-60 50 50)" />
+                            <circle cx="50" cy="50" r="8" fill="#D4AF37" />
+                            <circle cx="20" cy="50" r="3" fill="#064420" />
+                            <circle cx="80" cy="50" r="3" fill="#064420" />
+                        </svg>
+                    </div>
+                </div>
+
+                <!-- Right Column: Content -->
+                <div class="siqia-content">
+                    <h3 class="siqia-headline">Quantum & AI Research Seedbed</h3>
+                    <p class="siqia-description">We bridge the gap between theoretical physics and industrial
+                        application. SIQIA is Legion's dedicated unit for exploring emerging technologies before they
+                        hit the market.</p>
+                    <ul class="siqia-list">
+                        <li>Academic & Technical Training in Quantum Mechanics.</li>
+                        <li>Development of Hybrid Classical-Quantum Models.</li>
+                        <li>Scientific Literature Review & Algorithm Design.</li>
+                        <li>Future-proofing Talent for the Quantum Era.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quantum CTA Section -->
+        <section class="quantum-cta-section">
+            <h2 class="cta-headline">The next chapter of your empire is now.</h2>
+            <div class="cta-buttons-wrapper">
+                <a href="#" class="quantum-btn-primary">
+                    CONSTRUIR CON LEGIÓN
+                </a>
+                <a href="#" class="quantum-btn-secondary">
+                    Hablar con un experto <span class="arrow">→</span>
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         PIE DE PÁGINA
+         ═══════════════════════════════════════════════════════════ -->
+
+    <footer class="footer">
+        <img src="assets/Legionblanco.svg" alt="Legion Logo" class="footer-logo">
+        <p class="footer-text">© 2026 LEGION. All rights reserved. | EL QUE ES, ANDA CON LOS QUE SON.</p>
+    </footer>
+
+    <!-- ═══════════════════════════════════════════════════════════
+         JAVASCRIPT
+         ═══════════════════════════════════════════════════════════ -->
+
+    <script src="components.js"></script>
+    <script>
+        // Scroll suave para enlaces internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const href = this.getAttribute('href');
+                if (!href || href === '#') return;
+
+                e.preventDefault();
+                try {
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                } catch (err) {
+                    console.warn('Selector inválido:', href);
+                }
+            });
+        });
+    </script>
+
+</body>
+
+</html>
