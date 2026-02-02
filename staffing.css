@@ -191,6 +191,44 @@ body::after {
     }
 }
 
+/* --- UNIVERSAL SECONDARY LINK STYLE --- */
+.final-link {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-family: 'Space Grotesk', sans-serif;
+    /* Ensure Font Match */
+    font-size: 1rem;
+    /* Fixed Size */
+    font-weight: 500;
+    /* Fixed Weight */
+    color: #E0E0E0;
+    /* Fixed Silver */
+    background: transparent !important;
+    border: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    /* No Button Padding */
+    margin-left: 24px;
+    /* Fixed Spacing from Primary Button */
+    transition: color 0.3s ease;
+    /* Color change ONLY */
+    animation: none !important;
+    /* KILL ALL ANIMATIONS */
+    box-shadow: none !important;
+}
+
+.final-link:hover {
+    color: #D4AF37 !important;
+    /* Fixed Gold */
+    transform: none !important;
+    /* NO movement */
+    background: transparent !important;
+}
+
+/* --------------------------------------- */
+
 /* Staffing Footer Section */
 .staffing-footer {
     padding: 120px 20px;
@@ -663,3 +701,34 @@ body::after {
         transform: translate3d(calc(-50% - 15px), 0, 0);
     }
 }
+
+/* --- FORCE FINAL LINK STYLE (NUCLEAR OPTION) --- */
+.final-link {
+    background: transparent !important;
+    border: none !important;
+    box-shadow: none !important;
+    outline: none !important;
+    padding: 0 !important;
+    margin-left: 25px !important;
+    font-family: 'Space Grotesk', sans-serif !important;
+    font-size: 1rem !important;
+    font-weight: 500 !important;
+    color: #E0E0E0 !important;
+    /* Silver */
+    text-decoration: none !important;
+    display: inline-block !important;
+    animation: none !important;
+    /* NO ANIMATION */
+    transform: none !important;
+    transition: color 0.3s ease !important;
+}
+
+.final-link:hover {
+    color: #D4AF37 !important;
+    /* Gold */
+    background: transparent !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* ----------------------------------------------- */
