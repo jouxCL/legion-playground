@@ -78,3 +78,21 @@ if (servicesGrid && scrollLeftBtn && scrollRightBtn) {
     });
 }
 
+// Accordion functionality (Universal)
+// Accordion functionality (Simple Switch)
+document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.service-trigger').forEach(trigger => {
+        trigger.addEventListener('click', function () {
+            // Toggle active class on parent
+            this.parentElement.classList.toggle('active');
+
+            // Optional: Close others
+            const currentItem = this.parentElement;
+            document.querySelectorAll('.service-accordion-item').forEach(item => {
+                if (item !== currentItem) {
+                    item.classList.remove('active');
+                }
+            });
+        });
+    });
+});
